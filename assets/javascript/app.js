@@ -20,9 +20,7 @@ var database = firebase.database();
     // Capture Button Click
     $("#add-train-btn").on("click", function(event) {
       event.preventDefault();
-      // YOUR TASK!!!
-      // Code in the logic for storing and retrieving the most recent user.
-      // Don't forget to provide initial data to your Firebase database.
+
       var name = $("#train-name-input").val().trim();
       var destination = $("#destination-input").val().trim();
       var first = $("#first-input").val().trim();
@@ -37,7 +35,7 @@ var database = firebase.database();
         dateAdded: firebase.database.ServerValue.TIMESTAMP
       });
     });
-    // Firebase watcher + initial loader HINT: This code behaves similarly to .on("value")
+
     database.ref().on("child_added", function(childSnapshot) {
 
         var tFrequency = parseInt(childSnapshot.val().frequency);
@@ -71,13 +69,6 @@ var database = firebase.database();
     }, function(errorObject) {
       console.log("Errors handled: " + errorObject.code);
     });
-    // database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
-    //   // Change the HTML to reflect
-    //   $("#name-display").html(snapshot.val().name);
-    //   $("#email-display").html(snapshot.val().email);
-    //   $("#age-display").html(snapshot.val().age);
-    //   $("#comment-display").html(snapshot.val().comment);
-    // });
 
     var tFrequency = 3;
     // Time is 3:30 AM
